@@ -2,8 +2,10 @@ package models;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter@Setter
+@ToString
 public class City {
     private String lat;
     private String lon;
@@ -14,4 +16,5 @@ public class City {
         this.lon = lon;
         this.name = name;
     }
+
 }

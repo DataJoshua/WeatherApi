@@ -1,12 +1,13 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import models.City;
+import models.Weather;
 import service.ApiService;
 import service.CityService;
 import service.UrlBuilder;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.Map;
 
 public class Main {
@@ -24,7 +25,12 @@ public class Main {
 
         ApiService service = new ApiService(url);
 
-        System.out.println(service.makeRequest());
-    }
+        ObjectMapper objectMapper = new ObjectMapper();
 
+        JsonNode node =  objectMapper.readTree(service.makeRequest());
+
+        Weather weather = new Weather(node, kazan);
+        System.out.println(weather);
+
+    }
 }
