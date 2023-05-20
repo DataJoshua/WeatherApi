@@ -13,9 +13,16 @@ import service.UrlBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, MessagingException {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String from = scanner.nextLine();
+        String to = scanner.nextLine();
+
         City kazan = new City("55.7879", "49.1233", "Kazan");
 
         // set the lat and long as parameters for the request
@@ -38,11 +45,15 @@ public class Main {
         ArrayList<String> imgs = new ArrayList<>();
         imgs.add("src/main/java/assets/cat.jpg");
 
-        Email email = new Email("nonReply@sample.com", "receiver@sample.com", "Teme",  weather.getAsHtml(), imgs);
+        Email email = new Email(from, to, "Teme",  weather.getAsHtml(), imgs);
 
         // Set MailTrap credentials
         MailTrapService mailTrapService = new MailTrapService("username","password", email);
 
         mailTrapService.send();
+
+        // Ask for emails in the console
+
+
     }
 }
