@@ -25,7 +25,7 @@ public class ApiService {
 
     public String makeRequest() throws IOException {
 
-        System.out.println(con.getURL().toString());
+        // System.out.println(con.getURL().toString());
 
         if(con.getResponseCode() == 200){
             BufferedReader in = new BufferedReader(
